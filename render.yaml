@@ -1,0 +1,26 @@
+services:
+  # BACKEND SPRING BOOT (Docker)
+  - type: web
+    name: spring-backend
+    env: docker
+    plan: free
+    repo: https://github.com/Han-28/LAB_15_SPRING_BOOT_REACT
+    branch: main
+    rootDir: PRJ_SERVICE_SPRING_BOOT_REACT
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+
+  # FRONTEND REACT (estático)
+  - type: static
+    name: react-frontend
+    plan: free
+    repo: https://github.com/Han-28/LAB_15_SPRING_BOOT_REACT
+    branch: main
+    rootDir: spring_boot_react_fronted
+    buildCommand: npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://spring-backend.onrender.com/api
