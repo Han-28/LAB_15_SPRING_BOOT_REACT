@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-const API_URL = "http://localhost:8080/api/v1/empleados";
+const API_URL = `${process.env.REACT_APP_API_URL}/empleados`;
 
 const FormEmpleado = () => {
   const [empleado, setEmpleado] = useState({
